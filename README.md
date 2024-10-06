@@ -1,24 +1,64 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル     
 
-Things you may want to cover:
+| Column             | Type   | Options    |
+| -------------------| ------ | -----------|
+| nicname            | string | null:false |
+| email              | string | null:false, foreign_key: true |
+| encrypted_password | string | null:false |
+| family_name        | string | null:false |
+| first_name         | string | null:false |
+| family_name_kana   | string | null:false |
+| first_name_kana    | string | null:false |
+| date_of_birth      | date   | null:false |
 
-* Ruby version
+### Association
+- has_many :items
+- has_many :purchasers
 
-* System dependencies
+## items テーブル
 
-* Configuration
+| Column             | Type   | Options    |
+| ------------------ | ------ | ---------- |
+| item_name          | string | null:false |
+| explanation        | text   | null:false |
+| category           | string | null:false |
+| situation          | text   | null:false |
+| shipping_fee       | integer | null:false |
+| category           | string | null:false |
+| region             | text   | null:false |
+| time_required      | text   | null:false |
+| price              | integer | null:false |
+| user_id            | references | null:false, foreign_key: true |
 
-* Database creation
+### Association
+- belongs_to :user
+- has_one :purchaser
 
-* Database initialization
+## purchasers テーブル
 
-* How to run the test suite
+| Column             | Type       | Options    |
+| ------------------ | ---------- | ---------- |
+| user_id            | references | null:false, foreign_key: true |
+| item_id            | references | null:false, foreign_key: true　|
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
+- has_one :item
+- has_one :user
 
-* Deployment instructions
+## address テーブル
 
-* ...
+| Column             | Type   | Options    |
+| ------------------ | ------ | ---------- |
+| family_name        | string | null:false |
+| first_name         | string | null:false |
+| post_code          | string | null:false |
+| city               | string | null:false |
+| address            | string | null:false |
+| building_name      | string | null:false |
+| phone_number       | string | null:false |
+| user_id            | references | null:false, foreign_key: true |
+
+### Association
+- has_one :purchaser
