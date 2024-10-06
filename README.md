@@ -5,7 +5,7 @@
 | Column             | Type   | Options    |
 | -------------------| ------ | -----------|
 | nicname            | string | null:false |
-| email              | string | null:false, foreign_key: true |
+| email              | string | null:false, unique: true|
 | encrypted_password | string | null:false |
 | family_name        | string | null:false |
 | first_name         | string | null:false |
@@ -23,14 +23,13 @@
 | ------------------ | ------ | ---------- |
 | item_name          | string | null:false |
 | explanation        | text   | null:false |
-| category           | string | null:false |
-| situation          | text   | null:false |
-| shipping_fee       | integer | null:false |
-| category           | string | null:false |
-| region             | text   | null:false |
-| time_required      | text   | null:false |
+| category_id        | integer | null:false |
+| situation_id       | integer | null:false |
+| shipping_fee_id    | integer | null:false |
+| region_id          | integer | null:false |
+| time_required_id   | integer | null:false |
 | price              | integer | null:false |
-| user_id            | references | null:false, foreign_key: true |
+| user               | references | null:false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -38,27 +37,26 @@
 
 ## purchasers テーブル
 
-| Column             | Type       | Options    |
-| ------------------ | ---------- | ---------- |
-| user_id            | references | null:false, foreign_key: true |
-| item_id            | references | null:false, foreign_key: true　|
+| Column          | Type       | Options    |
+| --------------- | ---------- | ---------- |
+| user            | references | null:false, foreign_key: true |
+| item            | references | null:false, foreign_key: true　|
 
 ### Association
 - has_one :item
 - has_one :user
 
-## address テーブル
+## addresses テーブル
 
 | Column             | Type   | Options    |
 | ------------------ | ------ | ---------- |
-| family_name        | string | null:false |
-| first_name         | string | null:false |
 | post_code          | string | null:false |
 | city               | string | null:false |
+| prefecture         | string | null:false |
 | address            | string | null:false |
-| building_name      | string | null:false |
+| building_name      | string |  |
 | phone_number       | string | null:false |
-| user_id            | references | null:false, foreign_key: true |
+| purchaser          | references | null:false, foreign_key: true |
 
 ### Association
 - has_one :purchaser
