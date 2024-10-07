@@ -26,7 +26,7 @@
 | category_id        | integer | null:false |
 | situation_id       | integer | null:false |
 | shipping_fee_id    | integer | null:false |
-| region_id          | integer | null:false |
+| city_id      | integer | null:false |
 | time_required_id   | integer | null:false |
 | price              | integer | null:false |
 | user               | references | null:false, foreign_key: true |
@@ -40,19 +40,20 @@
 | Column          | Type       | Options    |
 | --------------- | ---------- | ---------- |
 | user            | references | null:false, foreign_key: true |
-| item            | references | null:false, foreign_key: true　|
+| item            | references | null:false, foreign_key: true |
 
 ### Association
-- has_one :item
-- has_one :user
+- belongs_to :item
+- has_many :user
+- has_one : address
 
 ## addresses テーブル
 
 | Column             | Type   | Options    |
 | ------------------ | ------ | ---------- |
 | post_code          | string | null:false |
-| city               | string | null:false |
 | prefecture         | string | null:false |
+| city               | string | null:false |
 | address            | string | null:false |
 | building_name      | string |  |
 | phone_number       | string | null:false |
