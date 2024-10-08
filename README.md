@@ -4,7 +4,7 @@
 
 | Column             | Type   | Options    |
 | -------------------| ------ | -----------|
-| nicname            | string | null:false |
+| nickname            | string | null:false |
 | email              | string | null:false, unique: true|
 | encrypted_password | string | null:false |
 | family_name        | string | null:false |
@@ -26,7 +26,7 @@
 | category_id        | integer | null:false |
 | situation_id       | integer | null:false |
 | shipping_fee_id    | integer | null:false |
-| city_id      | integer | null:false |
+| prefecture_id      | integer | null:false |
 | time_required_id   | integer | null:false |
 | price              | integer | null:false |
 | user               | references | null:false, foreign_key: true |
@@ -44,7 +44,7 @@
 
 ### Association
 - belongs_to :item
-- has_many :user
+- belongs_to :user
 - has_one : address
 
 ## addresses テーブル
@@ -52,12 +52,12 @@
 | Column             | Type   | Options    |
 | ------------------ | ------ | ---------- |
 | post_code          | string | null:false |
-| prefecture         | string | null:false |
+| purchaser_id        | integer | null:false |
 | city               | string | null:false |
 | address            | string | null:false |
 | building_name      | string |  |
 | phone_number       | string | null:false |
-| purchaser          | references | null:false, foreign_key: true |
+
 
 ### Association
-- has_one :purchaser
+- belongs_to :purchaser
