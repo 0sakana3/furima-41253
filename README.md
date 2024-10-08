@@ -52,11 +52,12 @@
 | Column             | Type   | Options    |
 | ------------------ | ------ | ---------- |
 | post_code          | string | null:false |
-| purchaser_id        | integer | null:false |
+| purchaser          | references | null:false, foreign_key: true |
 | city               | string | null:false |
 | address            | string | null:false |
 | building_name      | string |  |
 | phone_number       | string | null:false |
+| prefectures         | string | null:false |
 
 
 ### Association
