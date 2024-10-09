@@ -53,7 +53,7 @@
 | ------------------ | ------ | ---------- |
 | post_code          | string | null:false |
 | purchaser          | references | null:false, foreign_key: true |
-| prefecture         | references | null:false, foreign_key: true |
+| prefecture_id      | integer | null:false |
 | city               | string | null:false |
 | address            | string | null:false |
 | building_name      | string |  |
