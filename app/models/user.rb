@@ -14,4 +14,9 @@ class User < ApplicationRecord
 
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
   validates :password, format: { with: VALID_PASSWORD_REGEX, message: 'Must contain both half-width alphanumeric characters' }
+
+  validates :family_name_kana, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+  validates :first_name_kana, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+  validates :family_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
+  validates :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
 end

@@ -52,6 +52,9 @@ RSpec.describe User, type: :model do
 
   describe '新規登録/本人情報確認' do
     it 'お名前（全角）は、名字と名前がそれぞれ必須であること' do
+      @user.family_name = ''
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
     it 'お名前(全角)は、全角（漢字・ひらがな・カタカナ）での入力が必須であること' do
     end
