@@ -88,12 +88,12 @@ RSpec.describe User, type: :model do
       end
     end
     context 'お名前カナ(全角)は、名字と名前がそれぞれ必須であること' do
-      it '名字(カナ)の入力が必須であること' do
+      it '名字(カナ)の入力が、必須であること' do
         @user.family_name_kana = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Family name kana can't be blank")
       end
-      it '名前(カナ)の入力が必須であること' do
+      it '名前(カナ)の入力が、必須であること' do
         @user.first_name_kana = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("First name kana can't be blank")
@@ -105,27 +105,27 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('Family name kana Full-width (Katakana) required')
       end
-      it '名字(カナ)の入力は全角（ひらがな）でないこと' do
+      it '名字(カナ)の入力は、全角（ひらがな）でないこと' do
         @user.family_name_kana = 'あいう'
         @user.valid?
         expect(@user.errors.full_messages).to include('Family name kana Full-width (Katakana) required')
       end
-      it '名字(カナ)の入力は全角（漢字）でないこと' do
+      it '名字(カナ)の入力は、全角（漢字）でないこと' do
         @user.family_name_kana = '仮'
         @user.valid?
         expect(@user.errors.full_messages).to include('Family name kana Full-width (Katakana) required')
       end
-      it '名前(カナ)の入力は半角でないこと' do
+      it '名前(カナ)の入力は、半角でないこと' do
         @user.first_name_kana = 'boss'
         @user.valid?
         expect(@user.errors.full_messages).to include('First name kana Full-width (Katakana) required')
       end
-      it '名前(カナ)の入力は全角（ひらがな）でないこと' do
+      it '名前(カナ)の入力は、全角（ひらがな）でないこと' do
         @user.first_name_kana = 'えお'
         @user.valid?
         expect(@user.errors.full_messages).to include('First name kana Full-width (Katakana) required')
       end
-      it '名前(カナ)の入力は全角（漢字）でないこと' do
+      it '名前(カナ)の入力は、全角（漢字）でないこと' do
         @user.first_name_kana = '名無'
         @user.valid?
         expect(@user.errors.full_messages).to include('First name kana Full-width (Katakana) required')
