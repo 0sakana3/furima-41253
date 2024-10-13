@@ -15,8 +15,10 @@ class User < ApplicationRecord
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
   validates :password, format: { with: VALID_PASSWORD_REGEX, message: 'Must contain both half-width alphanumeric characters' }
 
-  validates :family_name_kana, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'Full-width (Kanji, Hiragana, Katakana) required' }
-  validates :first_name_kana, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'Full-width (Kanji, Hiragana, Katakana) required'  }
-  validates :family_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: 'Full-width (Katakana) required' }
-  validates :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: 'Full-width (Katakana) required' }
+  VALID_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/
+  VALID_NAMEKANA_REGEX = /\A[ァ-ヶー－]+\z/
+  validates :family_name, format: { with: VALID_NAME_REGEX, message: 'Full-width (Kanji, Hiragana, Katakana) required' }
+  validates :first_name, format: { with: VALID_NAME_REGEX, message: 'Full-width (Kanji, Hiragana, Katakana) required' }
+  validates :family_name_kana, format: { with: VALID_NAMEKANA_REGEX, message: 'Full-width (Katakana) required' }
+  validates :first_name_kana, format: { with: VALID_NAMEKANA_REGEX, message: 'Full-width (Katakana) required' }
 end
