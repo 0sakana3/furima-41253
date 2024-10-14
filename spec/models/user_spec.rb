@@ -103,7 +103,7 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("First name kana can't be blank")
       end
-      it '姓(カナ)の入力は、英数字だと登録出来ない' do
+      it '姓（カナ）の入力は、英数字だと登録出来ない' do
         @user.family_name_kana = 'the1'
         @user.valid?
         expect(@user.errors.full_messages).to include('Family name kana Full-width (Katakana) required')
@@ -133,12 +133,12 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('First name kana Full-width (Katakana) required')
       end
-      it '名(カナ)の入力は、全角（漢字）だと登録出来ない' do
+      it '名（カナ）の入力は、全角（漢字）だと登録出来ない' do
         @user.first_name_kana = '名無'
         @user.valid?
         expect(@user.errors.full_messages).to include('First name kana Full-width (Katakana) required')
       end
-      it '名(カナ)の入力は、全角記号だと登録出来ない' do
+      it '名（カナ）の入力は、全角記号だと登録出来ない' do
         @user.first_name_kana = '**'
         @user.valid?
         expect(@user.errors.full_messages).to include('First name kana Full-width (Katakana) required')
