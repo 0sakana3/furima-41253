@@ -1,6 +1,6 @@
 const price = () => {
 
-window.addEventListener('load', () => {
+window.addEventListener('keyup', () => {
   const priceInput = document.getElementById( "item-price" );
 
   priceInput.addEventListener( 'input',()  => {
@@ -9,7 +9,7 @@ window.addEventListener('load', () => {
     
     const profitDisplay = document.getElementById("profit");
     profitDisplay.innerHTML = Math.floor( priceInput.value - Math.floor( priceInput.value * 0.1 ))
-})
+});
 });
 
 };
