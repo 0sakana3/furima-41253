@@ -11,9 +11,9 @@ RSpec.describe Item, type: :model do
     end
     context '商品の出品ができない時' do
       it '画像が付いていないと商品の出品ができない' do
-       @item.image = nil
-       @item.valid?
-       expect(@item.errors.full_messages).to include("Image can't be blank")
+        @item.image = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Image can't be blank")
       end
       it '商品名が空では商品の出品ができない' do
         @item.item_name = ''
@@ -58,27 +58,27 @@ RSpec.describe Item, type: :model do
       it '価格が全角では出品ができない' do
         @item.price = '１２３４５'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Half-width (digits) required")
+        expect(@item.errors.full_messages).to include('Price Half-width (digits) required')
       end
       it '価格が半角英字では出品ができない' do
         @item.price = 'aaa'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Half-width (digits) required")
+        expect(@item.errors.full_messages).to include('Price Half-width (digits) required')
       end
       it '価格が記号では出品ができない' do
         @item.price = '**'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Half-width (digits) required")
+        expect(@item.errors.full_messages).to include('Price Half-width (digits) required')
       end
       it '価格が300未満の場合には出品できない' do
         @item.price = '30'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Please register between 300 yen and 9,999,999 yen")
+        expect(@item.errors.full_messages).to include('Price Please register between 300 yen and 9,999,999 yen')
       end
       it '価格が10000000以上の場合には出品できない' do
         @item.price = '10000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Please register between 300 yen and 9,999,999 yen")
+        expect(@item.errors.full_messages).to include('Price Please register between 300 yen and 9,999,999 yen')
       end
     end
   end
