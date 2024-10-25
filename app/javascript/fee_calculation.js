@@ -6,6 +6,6 @@ window.addEventListener('load', () => {
     feeDisplay.innerHTML = Math.round ( priceInput.value * 0.1 );
     
     const profitDisplay = document.getElementById("profit");
-    profitDisplay.innerHTML = Math.round( priceInput.value - Math.round( priceInput.value * 0.1 ))
+    profitDisplay.innerHTML = Math.round( priceInput.value - Math.floor( priceInput.value * 0.1 ))
 })
 });
