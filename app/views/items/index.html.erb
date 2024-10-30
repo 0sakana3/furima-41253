@@ -131,7 +131,7 @@
       <% if @items.present? %>
       <% @items.each do |item| %>
       <li class='list'>
-        <%= link_to "#" do %>
+        <%= link_to item_path(item.id) do %>
         <div class='item-img-content'>
         <%= image_tag item.image.variant(resize_to_fill: [250,250]), class: 'item-image' if item.image.attached? %>
 
@@ -147,7 +147,8 @@
             <%= item.item_name %>
           </h3>
           <div class='item-price'>
-            <span><%= item.price %>円<br><%= item.shipping_fee.name %></span>
+            <span><%= item.price %>円<br><%= item.shipping_fee.name %>
+            </span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
