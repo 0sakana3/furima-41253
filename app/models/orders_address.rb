@@ -11,6 +11,8 @@ class OrdersAddress
     validates :address
     validates :phone_number,
               format: { with: VALID_PHONE_NUMBER, message: 'is invalid.Please enter 10-11 digit half-width numbers' }
+    validates :user_id
+    validates :item_id
   end
   validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
 
