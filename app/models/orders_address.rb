@@ -1,4 +1,6 @@
 class OrdersAddress
+  attr_accessor :token
+
   include ActiveModel::Model
   attr_accessor :item_id, :user_id, :oreders_id, :post_code, :prefecture_id, :city, :address, :building_name,
                 :phone_number
@@ -13,6 +15,7 @@ class OrdersAddress
               format: { with: VALID_PHONE_NUMBER, message: 'is invalid.Please enter 10-11 digit half-width numbers' }
     validates :user_id
     validates :item_id
+    validates :token
   end
   validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
 

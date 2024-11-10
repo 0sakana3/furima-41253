@@ -67,7 +67,6 @@ RSpec.describe OrdersAddress, type: :model do
       it 'itemが紐付いていないと保存できないこと' do
         @orders_address.item_id = nil
         @orders_address.valid?
-        binding.pry
         expect(@orders_address.errors.full_messages).to include("Item can't be blank")
       end
     end
