@@ -2,6 +2,8 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item, only: [:index, :new, :create]
   before_action :orderer_confirmation, only: [:index, :new, :create]
+  before_action :soldout_confirmation, only: [:index, :new, :create]
+
   def index
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
     @item = Item.find(params[:item_id])
@@ -51,5 +53,9 @@ class OrdersController < ApplicationController
 
   def orderer_confirmation
     redirect_to root_path if current_user.id == @item.user_id
+  end
+
+  def soldout_confirmation
+    redirect_to root_path unless @item.order.nil?
   end
 end
