@@ -1,15 +1,11 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_item, only: [:index, :new, :create]
-  before_action :orderer_confirmation, only: [:index, :new, :create]
-  before_action :soldout_confirmation, only: [:index, :new, :create]
+  before_action :set_item, only: [:index, :create]
+  before_action :orderer_confirmation, only: [:index, :create]
+  before_action :soldout_confirmation, only: [:index, :create]
 
   def index
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
-    @orders_address = OrdersAddress.new
-  end
-
-  def new
     @orders_address = OrdersAddress.new
   end
 
