@@ -49,8 +49,13 @@ RSpec.describe OrdersAddress, type: :model do
         @orders_address.valid?
         expect(@orders_address.errors.full_messages).to include("Phone number can't be blank")
       end
-      it 'phone_numberが10桁以上11桁以内でないと保存できないこと' do
+      it 'phone_numberが9文字以下だと保存できないこと' do
         @orders_address.phone_number = '123'
+        @orders_address.valid?
+        expect(@orders_address.errors.full_messages).to include('Phone number is invalid.Please enter 10-11 digit half-width numbers')
+      end
+      it 'phone_numberが12文字以上だと保存できないこと' do
+        @orders_address.phone_number = '123456789012'
         @orders_address.valid?
         expect(@orders_address.errors.full_messages).to include('Phone number is invalid.Please enter 10-11 digit half-width numbers')
       end
@@ -68,6 +73,11 @@ RSpec.describe OrdersAddress, type: :model do
         @orders_address.item_id = nil
         @orders_address.valid?
         expect(@orders_address.errors.full_messages).to include("Item can't be blank")
+      end
+      it 'tokenが空では購入できないこと' do
+        @orders_address.token = nil
+        @orders_address.valid?
+        expect(@orders_address.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
