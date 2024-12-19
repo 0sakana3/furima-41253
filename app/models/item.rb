@@ -23,4 +23,8 @@ class Item < ApplicationRecord
                     numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999,
                                     message: 'Please register between 300 yen and 9,999,999 yen' }
   validates :price, presence: true, numericality: { only_integer: true, message: 'Half-width (digits) required' }
+
+  def liked_by?(user)
+    likes.where(user_id: user.id).exists?
+  end
 end
