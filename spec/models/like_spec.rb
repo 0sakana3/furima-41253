@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Like, type: :model do
   before do
-    user = FactoryBot.create(:user)
-    item = FactoryBot.create(:item)
-    @like = FactoryBot.build(:like, user_id: user.id, item_id: item.id)
-    sleep(0.1)
+    @user = FactoryBot.create(:user)
+    @item = FactoryBot.create(:item)
+    @like = FactoryBot.build(:like, user_id: @user.id, item_id: @item.id)
+    sleep(0.2)
   end
   describe 'いいね機能' do
     context 'いいねができる場合' do
@@ -31,6 +31,13 @@ RSpec.describe Like, type: :model do
         @like.item_id = nil
         @like.valid?
         expect(@like.errors.full_messages).to include('Item must exist')
+      end
+      it '自分のアイテムにいいねできない' do
+        own_item = FactoryBot.create(:item, user: @user)
+        like = FactoryBot.build(:like, user_id: @user.id, item_id: own_item.id)
+        like.valid?
+        puts like.errors.full_messages
+        expect(like.errors.full_messages).to include('User You cannot like your own items')
       end
     end
   end

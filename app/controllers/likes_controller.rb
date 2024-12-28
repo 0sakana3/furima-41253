@@ -13,7 +13,13 @@ class LikesController < ApplicationController
           )
         end
       else
-        format.html { redirect_to request.referer, alert: 'いいねに失敗しました' }
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.update(
+            'error_messages',
+            partial: 'shared/error_messages',
+            locals: { model: like }
+          )
+        end
       end
     end
   end
