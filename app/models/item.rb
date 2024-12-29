@@ -2,6 +2,7 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
   has_one :order
+  has_many :likes
   has_one_attached :image
 
   belongs_to :category
@@ -22,4 +23,8 @@ class Item < ApplicationRecord
                     numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999,
                                     message: 'Please register between 300 yen and 9,999,999 yen' }
   validates :price, presence: true, numericality: { only_integer: true, message: 'Half-width (digits) required' }
+
+  def liked_by?(user)
+    likes.exists?(user_id: user.id)
+  end
 end

@@ -1,0 +1,8 @@
+<div id="like-btn-<%= item.id %>_like">
+   <% if user_signed_in? && item.liked_by?(current_user) %>
+      <%= link_to "いいねを外す", item_likes_path(item.id),  data: { turbo_method: :delete }, class: "item_likes" %>
+    <% else %>
+      <%= link_to "いいね", item_likes_path(item.id), data: { turbo_method: :post }, class: "item_likes" %>
+    <% end %>
+    <span><%= item.likes.count %></span>
+</div>

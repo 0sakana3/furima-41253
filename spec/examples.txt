@@ -16,6 +16,12 @@ example_id                                     | status | run_time        |
 ./spec/models/item_spec.rb[1:1:2:13]           | passed | 0.00261 seconds |
 ./spec/models/item_spec.rb[1:1:2:14]           | passed | 0.00271 seconds |
 ./spec/models/item_spec.rb[1:1:2:15]           | passed | 0.0027 seconds  |
+./spec/models/like_spec.rb[1:1:1:1]            | passed | 0.22013 seconds |
+./spec/models/like_spec.rb[1:1:1:2]            | passed | 0.50218 seconds |
+./spec/models/like_spec.rb[1:1:1:3]            | passed | 0.27343 seconds |
+./spec/models/like_spec.rb[1:1:2:1]            | passed | 0.22485 seconds |
+./spec/models/like_spec.rb[1:1:2:2]            | passed | 0.22101 seconds |
+./spec/models/like_spec.rb[1:1:2:3]            | passed | 0.24007 seconds |
 ./spec/models/orders_address_spec.rb[1:1:1:1]  | passed | 0.12776 seconds |
 ./spec/models/orders_address_spec.rb[1:1:1:2]  | passed | 0.12564 seconds |
 ./spec/models/orders_address_spec.rb[1:1:2:1]  | passed | 0.12524 seconds |

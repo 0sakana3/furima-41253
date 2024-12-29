@@ -16,6 +16,7 @@
 ### Association
 - has_many :items
 - has_many :orders
+- has_many :likes
 
 ## items テーブル
 
@@ -34,6 +35,7 @@
 ### Association
 - belongs_to :user
 - has_one :order
+- has_many :likes
 
 ## orders テーブル
 
@@ -59,7 +61,16 @@
 | building_name      | string |  |
 | phone_number       | string | null:false |
 
-
-
 ### Association
 - belongs_to :order
+
+## likes テーブル
+
+| Column          | Type       | Options    |
+| --------------- | ---------- | ---------- |
+| user            | references | null:false, foreign_key: true |
+| item            | references | null:false, foreign_key: true |
+
+### Association
+- belongs_to :item
+- belongs_to :user

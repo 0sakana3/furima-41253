@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :items
   has_many :orders
+  has_many :likes
 
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
   VALID_NAME_REGEX = /\A[ぁ-んァ-ヶ一-龥々ー]+\z/
